@@ -1,5 +1,5 @@
 # https://sheharyar.me/blog/free-ssl-for-github-pages-with-custom-domains/
-theme: jekyll-theme-cayman
+theme: jekyll-theme-minimal
 url: https://florin-cosmin.dk
 enforce_ssl: www.florin-cosmin.dk
 
