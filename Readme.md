@@ -13,5 +13,5 @@ Add posts in _posts folder
 
 
 ### TODO's
- [ ] - add custom javascript
- [ ] - tweak pages/layouts as needed 
+- [ ] add custom javascript
+- [ ] tweak pages/layouts as needed 
