@@ -8,3 +8,10 @@ Original theme: [mmistakes/so-simple-theme](https://github.com/mmistakes/so-simp
   4. create blog structure (files and folders)
 
 ---
+
+Add posts in _posts folder
+
+
+### TODO's
+ [ ] - add custom javascript
+ [ ] - tweak pages/layouts as needed 
