@@ -19,7 +19,7 @@ remote_theme: mmistakes/so-simple-theme
 
 locale: en-US
 title: "florin-cosmin.dk"
-description: "a developers blog"
+description: "a developer's blog"
 baseurl: "/"
 url: https://florin-cosmin.dk
 enforce_ssl: www.florin-cosmin.dk
