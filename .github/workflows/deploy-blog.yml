@@ -24,8 +24,6 @@ jobs:
         uses: actions/setup-node@v1
       - run: npm install
       - run: npm run build
-        env:
-            CI: true
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.1
