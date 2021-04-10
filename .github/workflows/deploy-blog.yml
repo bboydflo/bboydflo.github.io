@@ -16,6 +16,7 @@ jobs:
           node-version: '14'
       - run: npm install
       - run: npm run build && npm run export
+      - run: cp CNAME out/CNAME # necessary since we need CNAME in the final output
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.1
