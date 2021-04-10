@@ -13,8 +13,7 @@ jobs:
       - name: Install and Build 🔧
         uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
-          registry-url: htps://registry.npmjs.com
+          node-version: '14'
       - run: npm install
       - run: npm run build
 
