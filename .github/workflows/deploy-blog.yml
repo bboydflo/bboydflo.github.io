@@ -6,10 +6,6 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x]
-
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
