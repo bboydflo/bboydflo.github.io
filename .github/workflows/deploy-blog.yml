@@ -27,4 +27,4 @@ jobs:
           branch: gh-pages # The branch the action should deploy to.
           folder: out # The folder the action should deploy.
 
-      - run: echo '💡 The ${{ github.repository }} repository has been cloned to the runner.'
+      - run: echo '💡 The last build has been deployed to https://florin-cosmin.dk!'
