@@ -3,7 +3,7 @@ name: Deploy Blog
 on:
   push:
     branches:
-      - 'build-and-deploy-website'
+      - 'master'
 
 jobs:
   build-and-deploy:
