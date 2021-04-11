@@ -1,5 +1,13 @@
 # Personal Website
 
+Tech Stack:
+
+- Next.js
+
+- Tailwind
+
+Deployed on github pages (`gh-pages` branch) and has a custom domain at cloudflare (where username is my gmail address)
+
 My personal website built from scratch
 
 This is a starter template for [Learn Next.js](https://nextjs.org/learn).
