@@ -6,6 +6,8 @@ Tech Stack:
 
 - Tailwind
 
+- Preact (https://github.com/preactjs/next-plugin-preact and https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config)
+
 Deployed on github pages (`gh-pages` branch) and has a custom domain at cloudflare (where username is my gmail address)
 
 My personal website built from scratch
