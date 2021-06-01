@@ -8,7 +8,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <p className='black'>Hello, Florin!</p>
+        <p className='black'>Hello, World!</p>
       </main>
 
       <style jsx>{`
