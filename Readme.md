@@ -10,9 +10,17 @@ Deployed on github pages (`gh-pages` branch) and has a custom domain at cloudfla
 
 My personal website built from scratch
 
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+## Workflow/Deployment
 
-Todo's
+```sh
+git add .
+git commit -m "deploy"
+git push
+```
+
+There is a `deploy-blog` github action that will run everytime I merge/push something to master. That will build the project and deploy the output to `gh-pages` branch.
+
+### Todo's
 
 - preact (if possible)
 - simple experiment page
