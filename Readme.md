@@ -10,7 +10,15 @@ Deployed on github pages (`gh-pages` branch) and has a custom domain at cloudfla
 
 My personal website built from scratch
 
-## Workflow/Deployment
+## Workflow - Dev/Deployment
+
+To develop
+
+```sh
+npm run dev # check https://nextjs.org/docs/api-reference/cli#development
+```
+
+To deploy
 
 ```sh
 git add .
@@ -27,4 +35,7 @@ There is a `deploy-blog` github action that will run everytime I merge/push some
 - smart css spliting (page, component, lazy, above the fold etc)
 - lighthouse ci -> github actions?
 - some sort of docker deployment pipeline
-- github actions to automatically redeploy my blog on push (https://javascript.plainenglish.io/deploy-your-next-js-app-on-github-pages-using-the-github-action-525271137409)
+
+### Resources
+
+- github actions to automatically redeploy my blog on push [check this article](https://javascript.plainenglish.io/deploy-your-next-js-app-on-github-pages-using-the-github-action-525271137409)
