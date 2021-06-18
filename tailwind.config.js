@@ -1,13 +1,13 @@
 module.exports = {
   mode: 'jit',
-  purge: [
-    // Use *.tsx if using TypeScript
-    './pages/**/*.js',
-    './components/**/*.js'
-  ],
+  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      zIndex: {
+        '-1': '-1'
+      }
+    },
   },
   variants: {
     extend: {},
