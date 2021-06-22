@@ -14,7 +14,7 @@ class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head />
-        <body className={`bg-gray-50 ${process.env.DEVELOPMENT === 'true' ? 'debug-screens' : ''}`}>
+        <body className={`bg-gradient-to-br from-gray-50 to-purple-50 min-h-screen ${process.env.DEVELOPMENT === 'true' ? 'debug-screens' : ''}`}>
           <Main />
           <NextScript />
         </body>
