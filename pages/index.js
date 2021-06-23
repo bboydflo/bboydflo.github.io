@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { getAllFilesFrontMatter } from '../src/mdx'
 
 export async function getStaticProps() {
-  const posts = await getAllFilesFrontMatter('blog')
+  const posts = await getAllFilesFrontMatter('sample')
 
   return { props: { posts } }
 }
@@ -10,6 +10,9 @@ export async function getStaticProps() {
 export default function Home({ posts }) {
 
   const MAX_DISPLAY = 5
+  const postDateTemplate = { year: 'numeric', month: 'long', day: 'numeric' }
+
+  const isDev = process.env.NEXT_PUBLIC_DEVELOPMENT
 
   return (
     <>
@@ -37,7 +40,7 @@ export default function Home({ posts }) {
           <div className='container flex flex-col px-4 mx-auto mt-6 text-gray-600 sm:px-6 md:px-8 '>
             <h1 className='text-2xl font-semibold sm:text-3xl lg:text-4xl xl:text-6xl lg:text-left'><span className='tracking-wide'>Florin Onciu</span> / Software Developer</h1>
             <h2 className='max-w-4xl mt-4 text-xl leading-8 text-gray-700 lg:text-left sm:text-2xl lg:text-3xl selection:bg-yellow-300'>Hi! My name is Florin and I am a <span className='px-2 bg-yellow-300 selection:bg-purple-500 selection:text-gray-200'>Software Developer</span> with a focus on <strong>Frontend Development</strong>. I care about simple and performant code, clean design and well architected apps. Welcome to my personal page!</h2>
-            <a href='#' className='flex self-center justify-center px-8 py-4 mt-6 text-xl text-gray-200 transition-all bg-purple-500 border-purple-200 rounded-lg lg:self-start border-1 hover:bg-purple-600 align-center hover:-translate-y-1'>
+            <a href='/cv-florin-cosmin-pstbst.pdf' download className='flex self-center justify-center px-8 py-4 mt-6 text-xl text-gray-200 transition-all bg-purple-500 border-purple-200 rounded-lg lg:self-start border-1 hover:bg-purple-600 align-center hover:-translate-y-1'>
               <span className='inline-block mr-2 text-purple-300'>
                 <svg xmlns='http://www.w3.org/2000/svg' className='w-6 h-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                   <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10' />
@@ -52,17 +55,26 @@ export default function Home({ posts }) {
         <div className='container px-4 pb-8 mx-auto sm:px-6 md:px-8'>
           <h2 className='mb-4 text-2xl font-semibold text-gray-700'><span className='inline-block pb-1 border-b-4 border-yellow-400'>Latest Blog Posts</span></h2>
 
-          {!posts.length && <p className=''>No posts found...</p>}
+          {isDev && !posts.length && <p className=''>No posts found...</p>}
 
-
-          {posts.length && (
+          {isDev && posts.length && (
             <div className='flex flex-col mb-4 space-y-2'>
               {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
                 const { slug, date, title, summary, tags } = frontMatter
                 return (
 
                   <article className='px-2 py-4 transition-all duration-300 rounded-md hover:bg-gray-100' key={slug}>
-                    <div className='text-base leading-6 text-gray-400 uppercase'>{date}</div>
+                    <div className='text-base leading-6 text-gray-400 uppercase'>
+
+                      <dl>
+                        <dt className='sr-only'>Published on</dt>
+                        <dd className=''>
+                          <time dateTime={date}>
+                            {new Date(date).toLocaleDateString('en-us', postDateTemplate)}
+                          </time>
+                        </dd>
+                      </dl>
+                    </div>
                     <a href='#' className='inline-block text-2xl leading-8 text-gray-700 transition-all duration-300 transform hover:text-purple-500 hover:translate-x-1'>{title}</a>
                   </article>
                 )
@@ -70,28 +82,32 @@ export default function Home({ posts }) {
             </div>
           )}
 
-          {/* <div className='flex flex-col mb-4 space-y-2'>
-            <article className='px-2 py-4 transition-all duration-300 rounded-md hover:bg-gray-100'>
-              <div className='text-base leading-6 text-gray-400 uppercase'>May 21, 2021</div>
-              <a href='#' className='inline-block text-2xl leading-8 text-gray-700 transition-all duration-300 transform hover:text-purple-500 hover:translate-x-1'>How to share data between browser tabs</a>
-            </article>
-            <article className='px-2 py-4 transition-all duration-300 rounded-md hover:bg-gray-100'>
-              <div className='text-base leading-6 text-gray-400 uppercase'>May 16, 2021</div>
-              <a href='#' className='inline-block text-2xl leading-8 text-gray-700 transition-all duration-300 transform hover:text-purple-500 hover:translate-x-1'>Use esbuild to speed up your development</a>
-            </article>
-            <article className='px-2 py-4 transition-all duration-300 rounded-md hover:bg-gray-100'>
-              <div className='text-base leading-6 text-gray-400 uppercase'>April 12, 2021</div>
-              <a href='#' className='inline-block text-2xl leading-8 text-gray-700 transition-all duration-300 transform hover:text-purple-500 hover:translate-x-1'>Create your first React, Node and TypeScript project</a>
-            </article>
-            <article className='px-2 py-4 transition-all duration-300 rounded-md hover:bg-gray-100'>
-              <div className='text-base leading-6 text-gray-400 uppercase'>April 12, 2021</div>
-              <a href='#' className='inline-block text-2xl leading-8 text-gray-700 transition-all duration-300 transform hover:text-purple-500 hover:translate-x-1'>How to get started with Next.js, Preact and TypeScript</a>
-            </article>
-            <article className='px-2 py-4 transition-all duration-300 rounded-md hover:bg-gray-100'>
-              <div className='text-base leading-6 text-gray-400 uppercase'>April 8, 2021</div>
-              <a href='#' className='inline-block text-2xl leading-8 text-gray-700 transition-all duration-300 transform hover:text-purple-500 hover:translate-x-1'>TypeScript tips and tricks (part 1)</a>
-            </article>
-          </div> */}
+          {
+            !isDev && (
+              <div className='flex flex-col mb-4 space-y-2'>
+                <article className='px-2 py-4 transition-all duration-300 rounded-md hover:bg-gray-100'>
+                  <div className='text-base leading-6 text-gray-400 uppercase'>May 21, 2021</div>
+                  <a href='#' className='inline-block text-2xl leading-8 text-gray-700 transition-all duration-300 transform hover:text-purple-500 hover:translate-x-1'>How to share data between browser tabs</a>
+                </article>
+                <article className='px-2 py-4 transition-all duration-300 rounded-md hover:bg-gray-100'>
+                  <div className='text-base leading-6 text-gray-400 uppercase'>May 16, 2021</div>
+                  <a href='#' className='inline-block text-2xl leading-8 text-gray-700 transition-all duration-300 transform hover:text-purple-500 hover:translate-x-1'>Use esbuild to speed up your development</a>
+                </article>
+                <article className='px-2 py-4 transition-all duration-300 rounded-md hover:bg-gray-100'>
+                  <div className='text-base leading-6 text-gray-400 uppercase'>April 12, 2021</div>
+                  <a href='#' className='inline-block text-2xl leading-8 text-gray-700 transition-all duration-300 transform hover:text-purple-500 hover:translate-x-1'>Create your first React, Node and TypeScript project</a>
+                </article>
+                <article className='px-2 py-4 transition-all duration-300 rounded-md hover:bg-gray-100'>
+                  <div className='text-base leading-6 text-gray-400 uppercase'>April 12, 2021</div>
+                  <a href='#' className='inline-block text-2xl leading-8 text-gray-700 transition-all duration-300 transform hover:text-purple-500 hover:translate-x-1'>How to get started with Next.js, Preact and TypeScript</a>
+                </article>
+                <article className='px-2 py-4 transition-all duration-300 rounded-md hover:bg-gray-100'>
+                  <div className='text-base leading-6 text-gray-400 uppercase'>April 8, 2021</div>
+                  <a href='#' className='inline-block text-2xl leading-8 text-gray-700 transition-all duration-300 transform hover:text-purple-500 hover:translate-x-1'>TypeScript tips and tricks (part 1)</a>
+                </article>
+              </div>
+            )
+          }
 
           <a href='#' className='px-4 py-2 text-xl text-gray-700 transition-all bg-purple-200 border-purple-400 rounded-lg border-1 hover:bg-purple-300 hover:-translate-y-1'>
             Check all blogs

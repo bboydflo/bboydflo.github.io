@@ -115,7 +115,7 @@ export async function getAllFilesFrontMatter(folder) {
     const prefixPaths = path.join(root, 'src', 'data', folder)
 
     // const files = getAllFilesRecursively(prefixPaths)
-    const files = fastGlob.sync(`${prefixPaths}/*.md`)
+    const files = fastGlob.sync(`${prefixPaths}/*.{md,mdx}`)
 
     console.log({ files })
 
