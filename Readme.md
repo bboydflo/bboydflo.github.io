@@ -4,6 +4,8 @@ Tech Stack:
 
 - Next.js
 
+- Preact
+
 - Tailwind
 
 Deployed on github pages (`gh-pages` branch) and has a custom domain at cloudflare (where username is my gmail address)
@@ -41,3 +43,4 @@ There is a `deploy-blog` github action that will run everytime I merge/push some
 - github actions to automatically redeploy my blog on push [check this article](https://javascript.plainenglish.io/deploy-your-next-js-app-on-github-pages-using-the-github-action-525271137409)
 - [skewed background using css](https://codepen.io/enbee81/full/yLyrmyg)
 - [hero icons](https://heroicons.com/)
+- [favicon generator](https://www.favicon-generator.org/)
