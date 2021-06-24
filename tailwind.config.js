@@ -2,7 +2,7 @@ const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   mode: 'jit',
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  purge: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -39,19 +39,29 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {},
-  },
   plugins: [
     plugin(function ({ addUtilities }) {
       const newUtilities = {
         '.backface-hidden': {
           'backface-visibility': 'hidden'
+        },
+        '.skewed-polygon': {
+          'clip-path': 'polygon(0 5%, 100% 0%, 100% 95%, 0 100%)'
+        },
+        '.skewed-polygon-sm': {
+          'clip-path': 'polygon(0 9%, 100% 0%, 100% 91%, 0 100%)'
+        },
+        '.skewed-polygon-md': {
+          'clip-path': 'polygon(0 13%, 100% 0%, 100% 87%, 0 100%)'
+        },
+        '.skewed-polygon-lg': {
+          'clip-path': 'polygon(0 15%, 100% 0%, 100% 85%, 0 100%)'
         }
       }
 
       addUtilities(newUtilities)
     }),
     require('tailwindcss-debug-screens'),
+    require('@tailwindcss/typography'),
   ],
 }

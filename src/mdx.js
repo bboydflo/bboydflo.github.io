@@ -10,6 +10,8 @@ import path from 'path'
 import fastGlob from 'fast-glob'
 
 const root = process.cwd()
+// POSTS_PATH is useful when you want to get the path to a specific file
+export const POSTS_PATH = path.join(root, 'src', 'data')
 
 /* const tokenClassNames = {
     tag: 'text-code-red',
@@ -26,10 +28,11 @@ const root = process.cwd()
 } */
 
 export function getFiles(type) {
-    const prefixPaths = path.join(root, 'data', type)
+    const prefixPaths = path.join(root, 'src', 'data', type)
     // const files = getAllFilesRecursively(prefixPaths)
-    const files = fastGlob.sync(prefixPaths)
-    // Only want to return blog/path and ignore root, replace is needed to work on Windows
+    // const files = fastGlob.sync(prefixPaths)
+    const files = fastGlob.sync(`${prefixPaths}/**/*.{md,mdx}`)
+    // Only want to return blog/path and ignore root replace is needed to work on Windows
     return files.map((file) => file.slice(prefixPaths.length + 1).replace(/\\/g, '/'))
 }
 
@@ -114,15 +117,13 @@ export function dateSortDesc(a, b) {
 export async function getAllFilesFrontMatter(folder) {
     const prefixPaths = path.join(root, 'src', 'data', folder)
 
-    // const files = getAllFilesRecursively(prefixPaths)
-    const files = fastGlob.sync(`${prefixPaths}/*.{md,mdx}`)
-
-    console.log({ files })
+    const files = fastGlob.sync(`${prefixPaths}/**/*.{md,mdx}`)
 
     const allFrontMatter = files
-        .map((file) => {
+        .map(file => {
             // Replace is needed to work on Windows
             const fileName = file.slice(prefixPaths.length + 1).replace(/\\/g, '/')
+
             const source = fs.readFileSync(file, 'utf8')
             const { data } = matter(source)
 
@@ -130,10 +131,6 @@ export async function getAllFilesFrontMatter(folder) {
                 ...data,
                 slug: formatSlug(fileName)
             }
-
-            /* if (data.draft !== true) {
-              allFrontMatter.push({ ...data, slug: formatSlug(fileName) })
-            } */
         })
         .filter(item => !item.draft)
 
