@@ -1,6 +1,6 @@
 export default function Menubar() {
     return (
-        <div className='flex flex-col items-center justify-end border-b border-purple-100 md:flex-row'>
+        <div className='flex flex-col items-center justify-end py-2 space-y-1 border-b border-purple-100 md:space-y-0 md:py-0 md:flex-row'>
             <a className='w-full px-8 py-2 text-center transition-all duration-300 border-l-4 border-transparent md:border-l-0 md:border-b-4 md:w-auto md:py-6 hover:bg-purple-200 hover:cursor-pointer hover:text-purple-900 hover:underline hover:border-purple-800'>Blog</a>
             <a className='w-full px-8 py-2 text-center transition-all duration-300 border-l-4 border-transparent md:border-l-0 md:border-b-4 md:w-auto md:py-6 hover:bg-purple-200 hover:cursor-pointer hover:text-purple-900 hover:underline hover:border-purple-800'>Projects</a>
             <a className='w-full px-8 py-2 text-center transition-all duration-300 border-l-4 border-transparent md:border-l-0 md:border-b-4 md:w-auto md:py-6 hover:bg-purple-200 hover:cursor-pointer hover:text-purple-900 hover:underline hover:border-purple-800'>Skills</a>

@@ -4,7 +4,7 @@ import { getAllFilesFrontMatter } from '../mdx'
 import HeroSection from '../components/HeroSection'
 import Layout from '../components/Layout'
 import Section from '../components/Section'
-import HeadingSecondary from '../components/HeadingSecondary'
+import HeadingSecondary from '../components/Headings'
 
 const MAX_DISPLAY = 5
 const postDateTemplate = { year: 'numeric', month: 'long', day: 'numeric' }
@@ -17,9 +17,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts }) {
-
-    console.log({ isDev })
-
     return (
         <Layout>
             <Head>
