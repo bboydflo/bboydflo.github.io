@@ -7,7 +7,7 @@ import Section from '../components/Section'
 import HeadingSecondary from '../components/Headings'
 
 const MAX_DISPLAY = 5
-const postDateTemplate = { year: 'numeric', month: 'long', day: 'numeric' }
+export const postDateTemplate = { year: 'numeric', month: 'long', day: 'numeric' }
 export const isDev = process.env.NEXT_PUBLIC_DEVELOPMENT
 
 export async function getStaticProps() {
@@ -36,7 +36,6 @@ export default function Home({ posts }) {
                             {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
                                 const { slug, date, title, summary, tags } = frontMatter
                                 return (
-
                                     <article className='px-1 py-2 transition-all duration-300 rounded-md md:px-2 md:py-4 hover:bg-gray-100' key={slug}>
                                         <div className='text-sm leading-6 text-gray-400 uppercase md:text-base'>
                                             <dl>
@@ -49,7 +48,7 @@ export default function Home({ posts }) {
                                             </dl>
                                         </div>
                                         <Link href={`/blog/${slug}`}>
-                                            <a className='inline-block text-xl leading-8 text-gray-700 transition-all duration-300 transform md:text-2xl hover:text-purple-500 hover:translate-x-1'>{title}</a>
+                                            <a className='inline-block text-xl leading-8 text-gray-700 transition-all duration-300 transform md:text-2xl hover:text-purple-500 hover:translate-x-1'>{`${isDev ? 'DEV' + title : title}`}</a>
                                         </Link>
                                     </article>
                                 )
@@ -93,7 +92,7 @@ export default function Home({ posts }) {
             <Section extraClasses={'bg-gray-200'}>
                 <div className='space-y-4'>
                     <HeadingSecondary headingText={'Blog posts tags'} />
-                    <ul className='flex flex-wrap py-2 gap-x-4 gap-y-2'>
+                    <ul className='flex flex-wrap justify-center py-2 space-x-4 space-y-2 md:justify-start'>
                         <li className='inline-block px-4 py-2 text-gray-500 bg-yellow-300 rounded-full'><a className='' href='#'>JavaScript</a></li>
                         <li className='inline-block px-4 py-2 text-white bg-blue-500 rounded-full'><a className='' href='#'>TypeScript</a></li>
                         <li className='inline-block px-4 py-2 text-white bg-red-500 rounded-full'><a className='' href='#'>Angular</a></li>

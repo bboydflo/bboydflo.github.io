@@ -1,5 +1,5 @@
 ---
-title: My fancy title
+title: DEV My fancy title
 date: '2021-01-31'
 tags: ['hello']
 draft: true

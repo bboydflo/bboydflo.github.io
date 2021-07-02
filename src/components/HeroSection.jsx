@@ -19,7 +19,7 @@ export default function HeroSection() {
                 <div className='container flex flex-col px-4 pt-6 mx-auto text-gray-600 sm:px-6 md:px-8 '>
                     <h1 className='text-2xl font-semibold sm:text-3xl lg:text-4xl xl:text-6xl lg:text-left'><span className='tracking-wide'>Florin Onciu</span> / Software Developer</h1>
                     <h2 className='max-w-4xl mt-4 text-xl leading-8 text-gray-700 lg:text-left sm:text-2xl lg:text-3xl selection:bg-yellow-300'>Hi! My name is Florin and I am a <span className='px-2 bg-yellow-300 selection:bg-purple-500 selection:text-gray-200'>Software Developer</span> with a focus on <strong>Frontend Development</strong>. I care about simple and performant code, clean design and well architected apps. Welcome to my personal page!</h2>
-                    <CallToAction btnText={'Download Resume'} linkProps={{ href: '/cv-florin-cosmin-pstbst.pdf', download: true }} />
+                    <CallToAction btnText={'Download Resume'} linkProps={{ href: '/florin-onciu-resume.pdf', download: true }} />
                 </div>
             </div>
         </div>

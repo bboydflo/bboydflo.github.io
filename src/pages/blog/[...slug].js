@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from 'fs-extra'
 import matter from 'gray-matter'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
@@ -14,25 +14,42 @@ import { isDev } from '../index'
  * check docs: https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation
  */
 export async function getStaticProps({ params }) {
-    const postFilePath = path.join(POSTS_PATH, isDev ? 'sample': 'blog', `${params.slug}.mdx`)
-    const source = fs.readFileSync(postFilePath)
+    const getDataFromFiles = ['md', 'mdx'].map(ext => {
+        const filePath = path.join(POSTS_PATH, isDev ? 'sample' : 'blog', `${params.slug.join('/')}.${ext}`)
+        return fs.pathExists(filePath)
+            .then(exists => {
+                if (!exists) {
+                    return
+                }
+                const source = fs.readFileSync(filePath)
+                const { content, data } = matter(source)
 
-    const { content, data } = matter(source)
+                const serializeOptions = {
+                    // Optionally pass remark/rehype plugins
+                    mdxOptions: {
+                        remarkPlugins: [],
+                        rehypePlugins: [],
+                    },
+                    scope: data,
+                }
 
-    const mdxSource = await serialize(content, {
-        // Optionally pass remark/rehype plugins
-        mdxOptions: {
-            remarkPlugins: [],
-            rehypePlugins: [],
-        },
-        scope: data,
+                return serialize(content, serializeOptions)
+                    .then(mdxSource => {
+                        return {
+                            source: mdxSource,
+                            frontMatter: data
+                        }
+                    })
+            })
     })
 
+    const data = await Promise.all(getDataFromFiles)
+    const props = data.filter(result => {
+        return typeof result !== 'undefined'
+    })[0]
+
     return {
-        props: {
-            source: mdxSource,
-            frontMatter: data,
-        },
+        props
     }
 }
 
@@ -58,8 +75,10 @@ export default function Post({ source, frontMatter }) {
             <Section extraClasses={'bg-gradient-to-r from-purple-200 to-yellow-100 py-8 flex align-center justify-center text-center'}>
                 <HeadingPrimary headingText={frontMatter.title}/>
             </Section>
-            <Section extraClasses={'prose md:prose-md lg:prose-lg xl:prose-xl mx-auto'}>
-                <MDXRemote {...source} components={{}} />
+            <Section extraClasses={'mx-auto bg-gray-50'}>
+                <div className='prose md:prose-md lg:prose-lg xl:prose-xl'>
+                    <MDXRemote {...source} components={{}} />
+                </div>
             </Section>
         </Layout>
     )

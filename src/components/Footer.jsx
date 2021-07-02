@@ -10,14 +10,14 @@ export default function Footer() {
     //     <p className='flex-1 pt-4 text-center text-gray-400 border-t border-gray-200 lg:text-right lg:pt-0 lg:border-t-0'>Built with <span className='text-red-500'>❤️</span> using Next.js, Preact and Tailwind CSS. © 2021 <span className=''>florin-cosmin.dk</span></p>
     // </footer>
     return (
-        <Section extraClasses=''>
-            <footer className='flex flex-col mx-auto space-y-4 text-lg lg:flex-row lg:space-y-0 lg:space-between lg:align-center'>
-                <ul className='flex justify-center text-gray-500 gap-x-4'>
-                    <li><a href='#' className='hover:text-purple-500'>Github</a></li>
-                    <li><a href='#' className='hover:text-purple-500'>Linkedin</a></li>
-                    <li><a href='#' className='hover:text-purple-500'>Twitter</a></li>
+        <Section extraClasses='bg-purple-400 text-gray-100'>
+            <footer className='flex flex-col space-y-4 text-lg lg:flex-row lg:space-y-0 lg:space-between lg:align-center'>
+                <ul className='flex justify-center space-x-4'>
+                    <li><a href='#' className='hover:text-purple-600 hover:border-b hover:border-purple-700'>Github</a></li>
+                    <li><a href='#' className='hover:text-purple-600 hover:border-b hover:border-purple-700'>Linkedin</a></li>
+                    <li><a href='#' className='hover:text-purple-600 hover:border-b hover:border-purple-700'>Twitter</a></li>
                 </ul>
-                <p className='flex-1 pt-4 text-center text-gray-400 border-t border-gray-200 lg:text-right lg:pt-0 lg:border-t-0'>Built with <span className='text-red-500'>❤️</span> using Next.js, Preact and Tailwind CSS. © 2021 <span className=''>florin-cosmin.dk</span></p>
+                <p className='flex-1 pt-4 text-center text-gray-200 border-t border-gray-200 lg:text-right lg:pt-0 lg:border-t-0'>Built with <span className='text-red-500'>❤️</span> using Next.js, React/Preact and Tailwind CSS. © 2021 <span className=''>florin-cosmin.dk</span></p>
             </footer>
         </Section>
     )
